@@ -50,5 +50,8 @@ let str3 = str1  +  str2
 // console.log(1 + "2" + 3);
 
 
-
+// the operation performs on left to right order that why 
+// console.log("1" + 2 + 3); result in 123
+// console.log((1 + 2 + "3")); resuot in. 33
+// console.log(1 + "2" + 3); result in 123
 
