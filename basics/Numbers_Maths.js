@@ -19,8 +19,9 @@ const hundreds = 1000000
 // console.log(Math.abs(-4));
 // console.log(Math.round(4.24343));
 // console.log(Math.ceil(4.34535));
+// console.log(Math.floor(4.34535));
 // console.log(Math);
-// console.log(Math.random())
+// console.log(Math.random())   //Math.random gives always random values between 0 and 1
 // console.log((Math.random()*10) + 1)
 // console.log((Math.random()*10) + 1)
 // console.log((Math.random()*10) + 1)
