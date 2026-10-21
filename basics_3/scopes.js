@@ -2,8 +2,8 @@
 var c = 300
 let a = 300
 if(true){
-let a = 10         ///every varible which is declared inside {} is known as blcok scope.and o=utside the { is known as globa; scope
-const b= 20
+let a = 10         ///every varible which is declared inside {} is known as block scope.and outside the { is known as global scope
+const b = 20
  c = 30
  console.log("Inner a :", a);
  
@@ -52,7 +52,8 @@ function addone(num){
 
 
 
-const addTwo = function(num){
+const addTwo = function(num){       ///function is defined also in this format and soetimes it is 
+                                    ////also called expressions.
     return num + 2
 }
 console.log(addTwo(5))
