@@ -41,7 +41,7 @@ const chai = () => {                ///arrow func is declare like this.
 
 
 ////Arrow function
-// const addTwo = (num1, num2) => {
+// const addTwo = (num1, num2) => {                     //explicit return
 // return num1 + num2
 // }
 //const addTwo = (num1, num2) => num1 + num2  ///this type is known as implicit return in which we dont need to use {}
