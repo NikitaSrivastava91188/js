@@ -3,38 +3,40 @@
 // ["", "", ""]
 // [{}, {}, {}]
 
-const arr = [1, 2, 3, 4, 5]
 
+const arr = [11, 12, 13, 14, 15]
 for (const num of arr) {
-    //console.log(num);
+// console.log(`value of array is ${num}`);
 }
 
-const greetings = "Hello world!"
-for (const greet of greetings) {
-    //console.log(`Each char is ${greet}`)
+const Name = "Nikita"
+for (const name  of Name) {
+// console.log(`each element of string is ${name}`);
 }
 
-// Maps
-
+///map doesn't store duplicate data, it only storeunique values and store in orderly.
 const map = new Map()
-map.set('IN', "India")
-map.set('USA', "United States of America")
-map.set('Fr', "France")
-map.set('IN', "India")
-
-
+map.set('In', "India")
+map.set('AR', "Argentina")
+map.set('SG', "Singapore")
+map.set('AU', "Australia")
+map.set('In', "India")
 // console.log(map);
 
-for (const [key, value] of map) {
-    // console.log(key, ':-', value);
+for (const [key, value] of map) {           ///[key, value] this is also known as array destructuring.
+    // console.log(key, `:-`, value);
+    
 }
 
 const myObject = {
-    game1: 'NFS',
-    game2: 'Spiderman'
+    game1: 'Temple run',
+    game2: 'crossword'
 }
 
-// for (const [key, value] of myObject) {
-//     console.log(key, ':-', value);
+
+
+///this is not working for objects.
+for (const [key, value]  of myObject) {
+    // console.log(key , value);
     
-// }
+}
