@@ -1,0 +1,133 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.canvas{
+     width: 150%;
+    max-width: 500px;
+}
+
+.container {
+    background: black;
+    width: 150%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  
+}
+
+
+
+h1 {
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    font-size: 26px;
+}
+
+.password-length-box {
+    color: white;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.password-box input {
+    color: black;
+    min-width: 0;
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+button {
+    padding: 12px 12px;
+    background: #2563eb;
+    color:white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    align-content: center;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.password-box{
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.password-length-box input {
+    color: red;
+    width: 60px;
+    padding: 5px;
+    align-items: center;
+}
+
+.options {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.options label {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+#generateBtn {
+    width: 100%;
+}
+
+#message {
+    color: white;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+/* #customize{
+    align-items: center;
+
+} */
+
+
+  #customize-password{
+    /* display: none; */
+    color: black;
+    /* align-items: center; */
+    margin-top: 0px;
+    margin-bottom: 20px;
+    /* align-content: center; */
+    align-items: center; /* Centers items horizontally */
+    justify-content: center;
+    text-align: center;
+    padding: 4px; 
+ }    
