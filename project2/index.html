@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href="style.css">
+    <link rel = "stylesheet" href="2.css">
     <!-- <link rel = "stylesheet" href= "style.css" /> --> 
-
-     <script src="script.js" defer></script>
+     <script src="3.js" defer></script>
     <title>Password Generator</title>
 </head>
 <body>
@@ -16,6 +15,14 @@
         <div class = "password-box">
             <input type= "text" id = "password" placeholder="Your password" readonly>
             <button id = "copyBtn">Copy</button>
+            <button id="saveBtn" type="button">Save Password</button>
+        </div>
+   
+        <div class="power-container">
+            <div id="power-point"></div>
+        </div>
+             <div class="Strength-box">
+<h5> password Strength</h5>
         </div>
 
         <div class="password-length-box">
@@ -50,9 +57,22 @@
 
         <button id="generateBtn">Generate Password</button> 
         <p id="message"></p>
+        <section id="saved-passwords-section">
+
+    <h3>Saved Passwords</h3>
+
+    <button id="deleteAllBtn" type="button">
+        Delete All
+    </button>
+
+    <div id="savedPasswords">
+        <!-- Saved passwords will appear here -->
+    </div>
+
+</section>
         </div>
     </div> 
-    
+
 </body>
 </html> 
 
