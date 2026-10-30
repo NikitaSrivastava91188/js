@@ -122,7 +122,6 @@ else{
 
 }
 
- generateBtn.addEventListener("click", generatePassword)
 
 function showTextField(){
    if (checkCustomizeBtn.checked){
@@ -136,18 +135,33 @@ customizeTextFieldContainer.style.display = 'block';
    }
 }
 
-checkCustomizeBtn.addEventListener("change", showTextField);
 
-copyBtn.addEventListener("click", () => {
-    if (password.value) {
-        navigator.clipboard.writeText(password.value);
+
+// copyBtn.addEventListener("click", () => {
+//     if (password.value) {
+//         navigator.clipboard.writeText(password.value);
+//         message.textContent = "Password copied to clipboard!";
+//     }
+
+//     else{
+//       message.textContent = "generate the password first!"
+//     }
+// });
+
+async function copyBtnClicked() {
+    if (!password.value) {
+        message.textContent = "Generate the password first!";
+        return;
+    }
+
+    try {
+        await navigator.clipboard.writeText(password.value);
         message.textContent = "Password copied to clipboard!";
+    } catch (error) {
+        message.textContent = "Unable to copy password. Please try again.";
+        console.error("Clipboard copy failed:", error);
     }
-
-    else{
-      message.textContent = "generate the password first!"
-    }
-});
+}
 
 
 // function measureStrength(){
@@ -280,8 +294,13 @@ function savePassword() {
 
     const savedPasswords = getSavedPasswords();
 
+    // const newEntry = {
+    //     id: crypto.randomUUID(),
+    //     password: currentPassword,
+    //     createdAt: new Date().toISOString()
+    // };
     const newEntry = {
-        id: crypto.randomUUID(),
+        id: typeof crypto.randomUUID === "function" ? crypto.randomUUID() : Date.now().toString(),
         password: currentPassword,
         createdAt: new Date().toISOString()
     };
@@ -298,3 +317,128 @@ function savePassword() {
     displaySavedPasswords();
 
 }
+
+function displaySavedPasswords() {
+
+    const savedPasswords = getSavedPasswords();
+
+    savedPasswordsContainer.replaceChildren();
+
+    if (savedPasswords.length === 0) {
+
+        const emptyMessage = document.createElement("p");
+
+        emptyMessage.textContent = "No saved passwords yet.";
+
+        savedPasswordsContainer.appendChild(emptyMessage);
+
+        return;
+    }
+
+    savedPasswords.forEach((entry) => {
+
+        const passwordItem = document.createElement("div");
+
+        passwordItem.className = "saved-password-item";
+
+        const passwordText = document.createElement("span");
+
+        passwordText.textContent = entry.password;
+
+        const copyButton = document.createElement("button");
+
+        copyButton.textContent = "Copy";
+
+        copyButton.addEventListener("click", async () => {
+
+            try {
+
+                await navigator.clipboard.writeText(entry.password);
+
+                message.textContent = "Saved password copied!";
+
+            } catch (error) {
+
+                message.textContent = "Unable to copy password.";
+
+            }
+
+        });
+
+        const deleteButton = document.createElement("button");
+
+        deleteButton.textContent = "Delete";
+
+        deleteButton.addEventListener("click", () => {
+
+            deletePassword(entry.id);
+
+        });
+
+        passwordItem.append(
+            passwordText,
+            copyButton,
+            deleteButton
+        );
+
+        savedPasswordsContainer.appendChild(passwordItem);
+
+    });
+
+}
+
+function deletePassword(id) {
+
+    const savedPasswords = getSavedPasswords();
+
+    const updatedPasswords = savedPasswords.filter(
+        (entry) => entry.id !== id
+    );
+
+    localStorage.setItem(
+        "savedPasswords",
+        JSON.stringify(updatedPasswords)
+    );
+
+    message.textContent = "Password deleted successfully!";
+
+    displaySavedPasswords();
+
+}
+
+
+function deleteAllPasswords() {
+
+    const savedPasswords = getSavedPasswords();
+
+    if (savedPasswords.length === 0) {
+
+        message.textContent = "No saved passwords to delete.";
+
+        return;
+    }
+
+    const confirmed = confirm(
+        "Are you sure you want to delete all saved passwords?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    localStorage.removeItem("savedPasswords");
+
+    message.textContent = "All saved passwords deleted.";
+
+    displaySavedPasswords();
+
+}
+
+
+generateBtn.addEventListener("click", generatePassword);
+checkCustomizeBtn.addEventListener("change", showTextField);
+copyBtn.addEventListener("click", copyBtnClicked)
+saveBtn.addEventListener("click", savePassword);
+deleteAllBtn.addEventListener("click", deleteAllPasswords);
+
+displaySavedPasswords();
